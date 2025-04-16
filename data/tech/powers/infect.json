@@ -1,6 +1,6 @@
 {
 	"name": "Infect",
-	"description": "You can fulfill your mission through contaminating blocks with some nasty infections! (Once free, infections attack your enemies)",
+	"description": "You can fulfill your mission through contaminating blocks (that you point your cursor at) with some nasty infections! Once free, infections work like a hivemind deleting your enemies'!",
 	"type": "apoli:multiple",
 	"infect": {
 		"type": "apoli:active_self",
