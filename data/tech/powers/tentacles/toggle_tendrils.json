@@ -1,0 +1,42 @@
+{
+    "name": "Error tendrils",
+    "description": "Release your viral tendrils that corrupt anything they touch! To not corrupt your own code, you can only perform this action for a brief amount of time",
+    "type": "apoli:multiple",
+    "activate": {
+        "type": "apoli:active_self",
+        "key": "key.saveToolbarActivator",
+        "cooldown": 2400,
+        "hud_render": {
+            "bar_index": 7,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png"
+        },
+        "entity_action": {
+            "type": "apoli:trigger_cooldown",
+            "power": "*:*_duration"
+        }
+    },
+    "duration": {
+        "type": "apoli:cooldown",
+        "cooldown": 140
+    },
+    "toggle_check": {
+        "type": "apoli:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "apoli:resource",
+            "resource": "*:*_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "apoli:grant_power",
+            "power": "*:tentacles/error_tendrils",
+            "source": "*:*"
+        },
+        "falling_action": {
+            "type": "apoli:revoke_power",
+            "power": "*:tentacles/error_tendrils",
+            "source": "*:*"
+        }
+    }
+}

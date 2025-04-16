@@ -1,0 +1,128 @@
+{
+	"name": "Infect",
+	"description": "You can fulfill your mission through contaminating blocks with some nasty infections! (Once free, infections attack your enemies)",
+	"type": "apoli:multiple",
+	"infect": {
+		"type": "apoli:active_self",
+		"key": "key.origins.primary_active",
+		"cooldown": 10,
+		"entity_action": {
+			"type": "apoli:raycast",
+			"block": true,
+			"entity": false,
+			"fluid_handling": "none",
+			"distance": 5,
+			"command_at_hit": "/execute align xyz run function tech:summon_infection",
+			"command_hit_offset": -0.1,
+			"miss_action": {
+				"type": "apoli:and",
+				"actions": [
+					{
+						"type": "apoli:delay",
+						"ticks": 1,
+						"action": {
+							"type": "apoli:change_resource",
+							"resource": "*:*",
+							"operation": "set",
+							"change": 0
+						}
+					}
+				]
+			},
+			"hit_action": {
+				"type": "apoli:change_resource",
+				"resource": "*:*_uses",
+				"change": -1
+			}
+		},
+		"condition": {
+			"type": "apoli:and",
+			"conditions": [
+				{
+					"type": "apoli:resource",
+					"resource": "*:*_uses",
+					"comparison": ">",
+					"compare_to": 0
+				},
+				{
+					"type": "apoli:sneaking",
+					"inverted": true
+				}
+			]
+		}
+	},
+	"cooldown": {
+		"type": "apoli:cooldown",
+		"cooldown": 300,
+		"hud_render": {
+			"bar_index": 14,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png"
+		}
+	},
+	"uses": {
+		"type": "apoli:resource",
+		"min": 0,
+		"max": 7,
+		"start_value": 5,
+		"hud_render": {
+			"bar_index": 19,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png"
+		}
+	},
+	"recharge": {
+		"type": "apoli:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:if_else",
+					"condition": {
+						"type": "apoli:resource",
+						"resource": "*:*_cooldown",
+						"comparison": "==",
+						"compare_to": 1
+					},
+					"if_action": {
+						"type": "apoli:if_else",
+						"if_action": {
+							"type": "apoli:change_resource",
+							"resource": "*:*_uses",
+							"change": 1
+						},
+						"condition": {
+							"type": "apoli:resource",
+							"resource": "*:*_uses",
+							"comparison": "<",
+							"compare_to": 5
+						}
+					}
+				},
+				{
+					"type": "apoli:if_else",
+					"condition": {
+						"type": "apoli:and",
+						"conditions": [
+							{
+								"type": "apoli:resource",
+								"resource": "*:*_cooldown",
+								"comparison": "==",
+								"compare_to": 0
+							},
+							{
+								"type": "apoli:resource",
+								"resource": "*:*_uses",
+								"comparison": "<",
+								"compare_to": 5
+							}
+						]
+					},
+					"if_action": {
+						"type": "apoli:trigger_cooldown",
+						"power": "*:*_cooldown"
+					}
+				}
+			]
+		}
+	}
+}

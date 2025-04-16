@@ -1,0 +1,97 @@
+{
+    "name": "Merge",
+    "description": "Call to neaby infections and merge them back to your code (recovers \"Infect\" power uses for every non-copy infection)",
+    "type": "apoli:active_self",
+    "cooldown": 10,
+    "condition": {
+        "type": "apoli:sneaking"
+    },
+    "entity_action": {
+        "type": "apoli:if_else",
+        "condition": {
+            "type": "apoli:command",
+            "command": "/execute if entity @e[tag=tech.infection,distance=..64]",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "if_action": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:spawn_particles",
+                    "particle": "minecraft:portal",
+                    "speed": 1,
+                    "count": 100
+                },
+                {
+                    "type": "apoli:play_sound",
+                    "sound": "minecraft:block.note_block.bit",
+                    "pitch": 0.5
+                },
+                {
+                    "type": "apoli:area_of_effect",
+                    "radius": 64,
+                    "shape": "sphere",
+                    "bientity_condition": {
+                        "type": "apoli:target_condition",
+                        "condition": {
+                            "type": "apoli:nbt",
+                            "nbt": "{Tags:[tech.infection]}"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "apoli:and",
+                        "actions": [
+                            {
+                                "type": "apoli:if_else",
+                                "condition": {
+                                    "type": "apoli:target_condition",
+                                    "condition": {
+                                        "type": "apoli:nbt",
+                                        "nbt": "{Tags:[tech.copy]}",
+                                        "inverted": true
+                                    }
+                                },
+                                "if_action": {
+                                    "type": "apoli:actor_action",
+                                    "action": {
+                                        "type": "apoli:change_resource",
+                                        "resource": "*:infect_uses",
+                                        "change": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "apoli:target_action",
+                                "action": {
+                                    "type": "apoli:and",
+                                    "actions": [
+                                        {
+                                            "type": "apoli:spawn_particles",
+                                            "count": 50,
+                                            "speed": 0.3,
+                                            "particle": {
+                                                "type": "item",
+                                                "params": "air"
+                                            }
+                                        },
+                                        {
+                                            "type": "apoli:play_sound",
+                                            "sound": "minecraft:entity.illusioner.mirror_move",
+                                            "pitch": 2,
+                                            "volume": 0.5
+                                        },
+                                        {
+                                            "type": "apoli:execute_command",
+                                            "command": "tp @s ~ -666 ~"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

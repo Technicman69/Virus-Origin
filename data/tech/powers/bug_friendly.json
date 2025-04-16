@@ -1,0 +1,81 @@
+{
+	"name": "Bug friendly",
+	"description": "As you're a bug, other bugs don't feel the need to pick on you",
+	"type": "apoli:multiple",
+	"team": {
+		"type": "apoli:action_on_callback",
+		"entity_action_gained": {
+			"type": "apoli:execute_command",
+			"command": "team join bugs"
+		},
+		"entity_action_lost": {
+			"type": "apoli:execute_command",
+			"command": "team leave @s"
+		}
+	},
+	"befriend": {
+		"type": "apoli:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "apoli:area_of_effect",
+			"bientity_condition": {
+				"type": "apoli:target_condition",
+				"condition": {
+					"type": "apoli:in_tag",
+					"tag": "tech:bugs"
+				}
+			},
+			"bientity_action": {
+				"type": "apoli:target_action",
+				"action": {
+					"type": "apoli:execute_command",
+					"command": "team join bugs"
+				}
+			}
+		}
+	},
+	"attack": {
+		"type": "apoli:target_action_on_hit",
+		"entity_action": {
+			"type": "apoli:area_of_effect",
+			"radius": 16,
+			"shape": "sphere",
+			"bientity_action": {
+				"type": "apoli:and",
+				"actions": [
+					{
+						"type": "apoli:damage",
+						"damage_type": "generic",
+						"amount": 0
+					},
+					{
+						"type": "apoli:target_action",
+						"action": {
+							"type": "apoli:add_velocity",
+							"set": true,
+							"x": 0,
+							"y": 0,
+							"z": 0
+						}
+					}
+				]
+			},
+			"bientity_condition": {
+				"type": "apoli:target_condition",
+				"condition": {
+					"type": "apoli:and",
+					"conditions": [
+						{
+							"type": "apoli:entity_type",
+							"entity_type": "minecraft:silverfish"
+						},
+						{
+							"type": "apoli:nbt",
+							"nbt": "{Tags:[tech.infection]}"
+						}
+					]
+				}
+			}
+		}
+	}
+}

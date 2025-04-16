@@ -1,0 +1,49 @@
+{
+	"name": "Corrupting handshake",
+	"description": "Every good trade starts with one...",
+	"type": "apoli:action_on_entity_use",
+	"bientity_condition": {
+		"type": "apoli:target_condition",
+		"condition": {
+			"type": "apoli:and",
+			"conditions": [
+				{
+					"type": "apoli:entity_type",
+					"entity_type": "minecraft:villager"
+				},
+				{
+					"type": "apoli:nbt",
+					"nbt": "{Tags:[tech.corrupted_villager]}",
+					"inverted": true
+				}
+			]
+		}
+	},
+	"bientity_action": {
+		"type": "apoli:target_action",
+		"action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:execute_command",
+					"command": "data merge entity @s {Tags:[tech.corrupted_villager],VillagerData:{type:plains,profession:nitwit,level:99},Offers:{Recipes:[]},CustomName:'[{\"text\":\"Dinnerbone\"}]'}"
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.illusioner.mirror_move",
+					"pitch": 1.4
+				},
+				{
+					"type": "apoli:spawn_particles",
+					"count": 100,
+					"particle": "minecraft:dripping_obsidian_tear",
+					"spread": {
+						"x": 1,
+						"y": 1,
+						"z": 1
+					}
+				}
+			]
+		}
+	}
+}

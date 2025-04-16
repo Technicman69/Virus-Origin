@@ -1,0 +1,83 @@
+{
+	"name": "Noclip",
+	"description": "Water, having weird physics and rough hitboxes make you phase through it. Wanna see how far can you sink?",
+	"type": "apoli:multiple",
+	"ignore_water": {
+		"type": "apoli:ignore_water"
+	},
+	"requirement": {
+		"type": "apoli:resource",
+		"min": 0,
+		"max": 1
+	},
+	"validate": {
+		"type": "apoli:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "apoli:or",
+			"conditions": [
+				{
+					"type": "apoli:fluid_height",
+					"fluid": "minecraft:water",
+					"comparison": ">",
+					"compare_to": 0.8
+				},
+				{
+					"type": "apoli:and",
+					"conditions": [
+						{
+							"type": "apoli:in_block",
+							"block_condition": {
+								"type": "apoli:movement_blocking"
+							}
+						},
+						{
+							"type": "apoli:resource",
+							"resource": "*:*_requirement",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				}
+			]
+		},
+		"rising_action": {
+			"type": "apoli:change_resource",
+			"resource": "*:*_requirement",
+			"operation": "set",
+			"change": 1
+		},
+		"falling_action": {
+			"type": "apoli:change_resource",
+			"resource": "*:*_requirement",
+			"operation": "set",
+			"change": 0
+		}
+	},
+	"phase": {
+		"type": "apoli:phasing",
+		"view_distance": 8,
+		"phase_down_condition": {
+			"type": "apoli:resource",
+			"resource": "*:*_requirement",
+			"comparison": "==",
+			"compare_to": 1
+		},
+		"condition": {
+			"type": "apoli:resource",
+			"resource": "*:*_requirement",
+			"comparison": "==",
+			"compare_to": 1
+		},
+		"block_condition": {
+			"type": "apoli:and",
+			"conditions": [
+				{
+					"type": "origins:in_tag",
+					"tag": "origins:unphasable",
+					"inverted": true
+				}
+			]
+		}
+	}
+}

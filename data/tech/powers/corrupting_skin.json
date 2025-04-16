@@ -1,0 +1,73 @@
+{
+	"name": "Malicious skin",
+	"description": "Everything that you equip seems to imbue with your malicious code thus changing its nbt randomly",
+	"type": "apoli:action_over_time",
+	"interval": 1200,
+	"entity_action": {
+		"type": "apoli:if_else",
+		"condition": {
+			"type": "apoli:chance",
+			"chance": 0.42
+		},
+		"if_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:modify_inventory",
+					"slots": ["armor.chest", "armor.feet", "armor.head", "armor.legs", "weapon.mainhand", "weapon.offhand"],
+					"item_condition": {
+						"type": "apoli:enchantment",
+						"comparison": ">",
+						"compare_to": 0
+					},
+					"item_action": {
+						"type": "apoli:modify",
+						"modifier": "tech:reroll_enchantments"
+					}
+				},
+				{
+					"type": "apoli:modify_inventory",
+					"slots": ["armor.chest", "armor.feet", "armor.head", "armor.legs"],
+					"item_action": {
+						"type": "apoli:modify",
+						"modifier": "tech:reroll_trim"
+					}
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:block.enchantment_table.use",
+					"pitch": 0.3
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.illusioner.prepare_blindness",
+					"volume": 0.4
+				},
+				{
+					"type": "apoli:spawn_particles",
+					"particle": "minecraft:enchant",
+					"count": 69,
+					"speed": 1,
+					"spread": {
+						"x": 1,
+						"y": 1,
+						"z": 1
+					}
+				},
+				{
+					"type": "apoli:spawn_particles",
+					"particle": {
+						"type": "minecraft:dust_color_transition",
+						"params": "1 0 1 1 0 0 0"
+					},
+					"count": 24,
+					"spread": {
+						"x": 1,
+						"y": 1,
+						"z": 1
+					}
+				}
+			]
+		}
+	}
+}

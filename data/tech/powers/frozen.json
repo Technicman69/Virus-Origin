@@ -1,0 +1,47 @@
+{
+	"type": "apoli:multiple",
+	"timer": {
+		"type": "apoli:resource",
+		"start_value": 69,
+		"min": 0,
+		"max": 69,
+		"min_action": {
+			"type": "apoli:remove_power",
+			"power": "*:*"
+		}
+	},
+	"decrease": {
+		"type": "apoli:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "apoli:change_resource",
+			"resource": "*:*_timer",
+			"change": -1
+		}
+	},
+	"overlay": {
+		"type": "apoli:overlay",
+		"visible_in_third_person": true,
+		"red": 1.0,
+		"green": 0.0,
+		"blue": 1.0,
+		"draw_mode": "texture",
+		"draw_phase": "below_hud",
+		"hide_with_hud": false,
+		"texture": "minecraft:textures/effect/dither.png"
+	},
+	"no_movement": {
+		"type": "apoli:modify_velocity",
+		"axes": ["x", "y", "z"],
+		"modifier": {
+			"operation": "set_total",
+			"value": 0
+		}
+	},
+	"color": {
+		"type": "apoli:model_color",
+		"red": 0,
+		"green": 0,
+		"blue": 0
+	}
+}

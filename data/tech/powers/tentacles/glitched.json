@@ -1,0 +1,65 @@
+{
+	"type": "apoli:multiple",
+	"particles": {
+		"hidden": true,
+		"type": "apoli:particle",
+		"frequency": 1,
+		"count": 2,
+		"particle": {
+			"type": "minecraft:item",
+			"params": "air"
+		},
+		"speed": 0.05
+	},
+	"color": {
+		"type": "apoli:model_color",
+		"red": 1,
+		"green": 0.5,
+		"blue": 1
+	},
+	"shaking": {
+		"type": "apoli:shaking"
+	},
+	"duration": {
+		"type": "apoli:resource",
+		"min": 0,
+		"max": 5,
+		"start_value": 5,
+		"min_action": {
+			"type": "apoli:remove_power",
+			"power": "*:*"
+		}
+	},
+	"shader": {
+		"type": "apoli:shader",
+		"shader": "minecraft:shaders/post/bits.json"
+	},
+	"timer_and_glitchiness": {
+		"type": "apoli:action_over_time",
+		"entity_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:change_resource",
+					"resource": "*:*_duration",
+					"change": -1
+				},
+				{
+					"type": "apoli:random_teleport",
+					"area_width": 4,
+					"area_height": 4
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.enderman.hurt",
+					"pitch": 0.5
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.bee.sting",
+					"pitch": 0.5
+				}
+			]
+		}
+	}
+}

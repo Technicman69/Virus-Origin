@@ -1,0 +1,57 @@
+{
+	"name": "Corrupting gaze",
+	"description": "being a powerfull virus, you can corrupt mobs just by looking at them",
+	"type": "apoli:active_self",
+	"key": "key.origins.secondary_active",
+	"cooldown": 132,
+	"hud_render": {
+		"bar_index": 19,
+		"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png"
+	},
+	"entity_action": {
+		"type": "apoli:raycast",
+		"block": false,
+		"entity": true,
+		"fluid_handling": "none",
+		"distance": 5,
+		"bientity_condition": {
+			"type": "apoli:target_condition",
+			"condition": {
+				"type": "apoli:living"
+			}
+		},
+		"bientity_action": {
+			"type": "apoli:target_action",
+			"action": {
+				"type": "apoli:if_else",
+				"condition": {
+					"type": "apoli:entity_type",
+					"entity_type": "minecraft:player"
+				},
+				"if_action": {
+					"type": "apoli:execute_command",
+					"command": "function tech:random_swap"
+				},
+				"else_action": {
+					"type": "apoli:execute_command",
+					"command": "function tech:random_conversion"
+				}
+			}
+		},
+		"miss_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:delay",
+					"ticks": 1,
+					"action": {
+						"type": "apoli:change_resource",
+						"resource": "*:*",
+						"operation": "set",
+						"change": 690
+					}
+				}
+			]
+		}
+	}
+}

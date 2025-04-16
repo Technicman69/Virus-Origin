@@ -1,0 +1,13 @@
+{
+	"name": "MissingBlockException",
+	"description": "When breaking a block, there's a small chance for it becoming corrupted by your hands. Woe to those who dare to touch it! (except you)",
+	"type": "apoli:action_on_block_break",
+	"block_action": {
+		"type": "apoli:chance",
+		"chance": 0.005,
+		"action": {
+			"type": "apoli:execute_command",
+			"command": "function tech:summon_error_block"
+		}
+	}
+}

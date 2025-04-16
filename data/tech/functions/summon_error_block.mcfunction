@@ -1,0 +1,2 @@
+execute align xyz run summon minecraft:block_display ~ ~ ~ {Tags:[tech.error_block],block_state:{Name:"black_concrete"},brightness:{block:0,sky:0}}
+scoreboard players set @e[tag=tech.error_block,limit=1,sort=nearest] lifetime 24000
