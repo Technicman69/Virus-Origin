@@ -1,0 +1,18 @@
+{
+	"type": "apoli:multiple",
+	"color": {
+		"type": "apoli:model_color",
+		"red": 1,
+		"green": 0,
+		"blue": 0
+	},
+	"particles": {
+		"type": "apoli:particle",
+		"frequency": 17,
+		"count": 1,
+		"particle": {
+			"type": "minecraft:dust",
+			"params": "1 0 0 1"
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"impact": 2,
+	"icon": {
+		"item": "minecraft:player_head",
+		"tag": "{SkullOwner:{Id:[I;539674879,1092963611,-1185674839,-425526429],Properties:{textures:[{Value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWM4ODE3ZWU4ZTljMmMyYmY3Njc0ODc3MzdlMGE2MGE1ZTA5YjcyNTEzOGUxNGRhYTU3NDgwYTAzZjE3NjZkOCJ9fX0=\"}]}}}"
+	},
+	"name": "Virus",
+	"description": "Born from the hands of a deranged programmer, your only purpose is to destroy and wreck havoc leading the entire Minecraft world to its downfall",
+	"powers": [
+		"tech:load_check",
+		"tech:vfx",
+		"tech:infect",
+		"tech:merge",
+		"tech:corrupt_code",
+		"tech:spreading_bugs",
+		"tech:tentacles/toggle_tendrils",
+		"tech:redstone_bugging",
+		"tech:bug_friendly",
+		"tech:corrupting_skin",
+		"tech:corrupting_handshake",
+		"tech:corrupt_block",
+		"tech:noclip",
+		"tech:unstable"
+	]
+}

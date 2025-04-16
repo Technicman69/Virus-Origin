@@ -1,0 +1,54 @@
+{
+	"name": "Spreading glitch",
+	"description": "Focus your malicious code and spread it around, freezing nearby mobs (and players' screens)",
+	"type": "apoli:active_self",
+	"key": "key.loadToolbarActivator",
+	"cooldown": 3600,
+	"hud_render": {
+		"bar_index": 11,
+		"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png"
+	},
+	"entity_action": {
+		"type": "apoli:and",
+		"actions": [
+			{
+				"type": "apoli:area_of_effect",
+				"radius": 8,
+				"bientity_action": {
+					"type": "apoli:target_action",
+					"action": {
+						"type": "apoli:grant_power",
+						"power": "*:frozen",
+						"source": "*:*"
+					}
+				},
+				"bientity_condition": {
+					"type": "apoli:target_condition",
+					"condition": {
+						"type": "apoli:in_tag",
+						"tag": "tech:bugs",
+						"inverted": true
+					}
+				}
+			},
+			{
+				"type": "apoli:spawn_particles",
+				"particle": {
+					"type": "minecraft:block_marker",
+					"params": "air"
+				},
+				"count": 100,
+				"spread": {
+					"x": 8,
+					"y": 8,
+					"z": 8
+				}
+			},
+			{
+				"type": "apoli:play_sound",
+				"sound": "minecraft:entity.zombie_villager.cure",
+				"pitch": 0.5
+			}
+		]
+	}
+}

@@ -1,0 +1,192 @@
+[
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"amethyst\", pattern:\"coast\"}}"
+	},
+
+
+	
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"copper\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.5
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"diamond\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.3333333
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"emerald\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.25
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"gold\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.2
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"iron\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1666666
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"lapis\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1428571
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"netherite\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.125
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"quartz\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1111111
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{material:\"redstone\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1
+			}
+		]
+	},
+
+
+	
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"dune\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.5
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"eye\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.3333333
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"spire\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.25
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"tide\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.2
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"rib\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1666666
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"sentry\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1428571
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"vex\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.125
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"ward\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1111111
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"snout\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1
+			}
+		]
+	}
+]

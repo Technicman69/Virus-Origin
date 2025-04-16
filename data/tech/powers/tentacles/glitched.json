@@ -1,0 +1,122 @@
+{
+	"type": "apoli:multiple",
+	"particles": {
+		"hidden": true,
+		"type": "apoli:particle",
+		"frequency": 1,
+		"count": 2,
+		"particle": {
+			"type": "minecraft:item",
+			"params": "air"
+		},
+		"speed": 0.05
+	},
+	"color": {
+		"type": "apoli:model_color",
+		"red": 1,
+		"green": 0.5,
+		"blue": 1
+	},
+	"shaking": {
+		"type": "apoli:shaking"
+	},
+	"duration": {
+		"type": "apoli:resource",
+		"min": 0,
+		"max": 5,
+		"start_value": 5,
+		"min_action": {
+			"type": "apoli:revoke_power",
+			"power": "*:*",
+			"source": "*:tentacles/error_tendrils"
+		}
+	},
+	"shader": {
+		"type": "apoli:shader",
+		"shader": "minecraft:shaders/post/bits.json"
+	},
+	"timer_and_glitchiness": {
+		"type": "apoli:action_over_time",
+		"entity_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:change_resource",
+					"resource": "*:*_duration",
+					"change": -1
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.enderman.hurt",
+					"pitch": 0.5
+				},
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.bee.sting",
+					"pitch": 0.5
+				},
+				{
+					"type": "apoli:choice",
+					"actions": [
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~4 ~ ~"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~-4 ~ ~"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~ ~ ~4"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~ ~ ~-4"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~2.83 ~ ~2.83"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~-2.83 ~ ~2.83"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~2.83 ~ ~-2.83"
+							}
+						},
+						{
+							"weight": 1,
+							"element": {
+								"type": "apoli:execute_command",
+								"command": "/tp @s ~-2.83 ~ ~-2.83"
+							}
+						}
+					]
+				}
+			]
+		}
+	}
+}

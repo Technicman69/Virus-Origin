@@ -1,0 +1,52 @@
+[
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"host\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.0909091
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"raiser\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.0833333
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"shaper\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.0769231
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"silence\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.0714286
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{Trim:{pattern:\"wayfinder\"}}",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.0666667
+			}
+		]
+	}
+]

@@ -1,0 +1,69 @@
+{
+	"name": "Glitch out",
+	"description": "A great damage dealt to you has a small chance of corrupting your position data, causing you to teleport randomly",
+	"type": "apoli:multiple",
+	"damage": {
+		"type": "apoli:action_when_damage_taken",
+		"cooldown": 20,
+		"damage_condition": {
+			"type": "apoli:amount",
+			"comparison": ">",
+			"compare_to": 1
+		},
+		"entity_action": {
+			"type": "apoli:chance",
+			"chance": 0.04,
+			"action": {
+				"type": "apoli:trigger_cooldown",
+				"power": "*:*_timer"
+			}
+		}
+	},
+	"timer": {
+		"type": "apoli:cooldown",
+		"cooldown": 20
+	},
+	"process": {
+		"type": "apoli:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "apoli:resource",
+			"resource": "*:*_timer",
+			"comparison": ">",
+			"compare_to": 0
+		},
+		"rising_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:entity.bee.hurt",
+					"pitch": 0.5
+				},
+				{
+					"type": "apoli:spawn_particles",
+					"particle": {
+						"type": "item",
+						"params": "air"
+					},
+					"speed": 0.3,
+					"count": 100
+				}
+			]
+		},
+		"falling_action": {
+			"type": "apoli:execute_command",
+			"command": "/spreadplayers ~ ~ 0 80 under 127 false @s"
+		}
+	},
+	"shader": {
+		"type": "apoli:shader",
+		"shader": "minecraft:shaders/post/bits.json",
+		"condition": {
+			"type": "apoli:resource",
+			"resource": "*:*_timer",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	}
+}

@@ -1,0 +1,63 @@
+[
+	{
+		"function": "set_nbt",
+		"tag": "{Enchantments:[]}"
+	},
+	{
+		"function": "enchant_randomly"
+	},
+	{
+		"function": "enchant_randomly",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.5
+			}
+		]
+	},
+	{
+		"function": "enchant_randomly",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.25
+			}
+		]
+	},
+	{
+		"function": "enchant_randomly",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1
+			}
+		]
+	},
+	{
+		"function": "enchant_randomly",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1
+			}
+		]
+	},
+	{
+		"function": "enchant_randomly",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.1
+			}
+		]
+	},
+	{
+		"function": "enchant_randomly",
+		"conditions": [
+			{
+				"condition": "random_chance",
+				"chance": 0.01
+			}
+		]
+	}
+]

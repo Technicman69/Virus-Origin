@@ -1,0 +1,37 @@
+{
+	"name": "Redstone bug",
+	"description": "Your spaghetti code holds a mysterious sequence of code that brings to life an entity known as the \"Redstone bug\". Redstone bugs can appear when there is powered redstone dust nearby",
+	"type": "apoli:action_over_time",
+	"interval": 100,
+	"entity_action": {
+		"type": "apoli:block_action_at",
+		"block_action": {
+			"type": "apoli:area_of_effect",
+			"radius": 8,
+			"shape": "cube",
+			"block_action": {
+				"type": "apoli:chance",
+				"chance": 0.00666,
+				"action": {
+					"type": "apoli:execute_command",
+					"command": "function tech:conditioned/release_redstone_bug"
+				}
+			},
+			"block_condition": {
+				"type": "apoli:and",
+				"conditions": [
+					{
+						"type": "apoli:block",
+						"block": "minecraft:redstone_wire"
+					},
+					{
+						"type": "apoli:block_state",
+						"property": "power",
+						"comparison": ">",
+						"compare_to": 0
+					}
+				]
+			}
+		}
+	}
+}

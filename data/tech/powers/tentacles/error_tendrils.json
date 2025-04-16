@@ -1,0 +1,192 @@
+{
+    "hidden": true,
+    "type": "apoli:multiple",
+    "add_and_remove": {
+        "type": "apoli:action_on_callback",
+        "entity_action_added": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/execute rotated ~ -90 run function tech:tentacles/util/summon_4"
+                }
+            ]
+        },
+        "entity_action_removed": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/function tech:tentacles/util/remove_4"
+                }
+            ]
+        }
+    },
+    "attach_tentacle_base": {
+        "type": "apoli:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "apoli:execute_command",
+            "command": "/tp @e[type=marker,tag=tent.base,sort=nearest,limit=4] ~ ~1.3 ~"
+        }
+    },
+    "attack_targets": {
+        "type": "apoli:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "apoli:area_of_effect",
+            "radius": 5,
+            "shape": "sphere",
+            "bientity_condition": {
+                "type": "apoli:and",
+                "conditions": [
+                    {
+                        "type": "apoli:target_condition",
+                        "condition": {
+                            "type": "apoli:command",
+                            "command": "execute if entity @s[tag=tent.target] if entity @e[type=marker,tag=tent.end,distance=..0.5]",
+                            "comparison": ">=",
+                            "compare_to": 1
+                        }
+                    }
+                ]
+            },
+            "bientity_action": {
+                "type": "apoli:and",
+                "actions": [
+                    {
+                        "type": "apoli:damage",
+                        "amount": 3,
+                        "damage_type": "out_of_world"
+                    },
+                    {
+                        "type": "apoli:add_velocity",
+                        "y": 0.05,
+                        "z": 0.5
+                    },
+                    {
+                        "type": "apoli:target_action",
+                        "action": {
+                            "type": "apoli:and",
+                            "actions": [
+                                {
+                                    "type": "apoli:execute_command",
+                                    "command": "function tech:tentacles/util/clear_target"
+                                },
+                                {
+                                    "type": "apoli:revoke_power",
+                                    "power": "*:tentacles/glitched",
+                                    "source": "*:*"
+                                },
+                                {
+                                    "type": "apoli:grant_power",
+                                    "power": "*:tentacles/glitched",
+                                    "source": "*:*"
+                                },
+                                {
+                                    "type": "apoli:apply_effect",
+                                    "effects": [
+                                        {
+                                            "effect": "minecraft:darkness"
+                                        },
+                                        {
+                                            "effect": "minecraft:wither"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "target_entities": {
+        "type": "apoli:action_over_time",
+        "interval": 2,
+        "entity_action": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "execute as @e[tag=tent.potential_target,distance=5..] run tag @s remove tent.potential_target"
+                },
+                {
+                    "type": "apoli:execute_command",
+                    "command": "execute as @e[tag=tent.target,distance=5..] run function tech:tentacles/util/clear_target"
+                },
+                {
+                    "type": "apoli:area_of_effect",
+                    "radius": 5,
+                    "shape": "sphere",
+                    "bientity_condition": {
+                        "type": "apoli:and",
+                        "conditions": [
+                            {
+                                "type": "apoli:target_condition",
+                                "condition": {
+                                    "type": "apoli:and",
+                                    "conditions": [
+                                        {
+                                            "type": "apoli:living"
+                                        },
+                                        {
+                                            "type": "apoli:gamemode",
+                                            "gamemode": "spectator",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "apoli:in_tag",
+                                            "tag": "tech:bugs",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "apoli:command",
+                                            "command": "execute if entity @s[tag=!tent.target,tag=!tent.node]",
+                                            "comparison": ">=",
+                                            "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "apoli:riding",
+                                "inverted": true
+                            },
+                            {
+                                "type": "apoli:and",
+                                "inverted": true,
+                                "conditions": [
+                                    {
+                                        "type": "apoli:target_condition",
+                                        "condition": {
+                                            "type": "apoli:tamed"
+                                        }
+                                    },
+                                    {
+                                        "type": "apoli:invert",
+                                        "condition": {
+                                            "type": "apoli:attack_target"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "bientity_action": {
+                        "type": "apoli:target_action",
+                        "action": {
+                            "type": "apoli:and",
+                            "actions": [
+                                {
+                                    "type": "apoli:execute_command",
+                                    "command": "tag @s add tent.potential_target"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
