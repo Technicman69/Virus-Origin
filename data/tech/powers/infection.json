@@ -15,11 +15,123 @@
 	"copy_paste": {
 		"type": "apoli:self_action_on_hit",
 		"entity_action": {
-			"type": "apoli:chance",
-			"chance": 0.404,
-			"action": {
-				"type": "apoli:execute_command",
-				"command": "function tech:conditioned/duplicate_infection"
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:execute_command",
+					"command": "/execute store result score %infection count if entity @e[type=minecraft:silverfish,tag=tech.infection,distance=..64]"
+				},
+				{
+					"type": "apoli:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "apoli:command",
+								"command": "/scoreboard players get %infection count",
+								"comparison": ">",
+								"compare_to": 24
+							},
+							"action": {
+								"type": "apoli:chance",
+								"chance": 0.01234,
+								"action": {
+									"type": "apoli:execute_command",
+									"command": "function tech:conditioned/duplicate_infection"
+								}
+							}
+						},
+						{
+							"condition": {
+								"type": "apoli:command",
+								"command": "/scoreboard players get %infection count",
+								"comparison": ">",
+								"compare_to": 16
+							},
+							"action": {
+								"type": "apoli:chance",
+								"chance": 0.069,
+								"action": {
+									"type": "apoli:execute_command",
+									"command": "function tech:conditioned/duplicate_infection"
+								}
+							}
+						},
+						{
+							"condition": {
+								"type": "apoli:command",
+								"command": "/scoreboard players get %infection count",
+								"comparison": ">",
+								"compare_to": 8
+							},
+							"action": {
+								"type": "apoli:chance",
+								"chance": 0.14159,
+								"action": {
+									"type": "apoli:execute_command",
+									"command": "function tech:conditioned/duplicate_infection"
+								}
+							}
+						},
+						{
+							"condition": {
+								"type": "apoli:constant",
+								"value": true
+							},
+							"action": {
+								"type": "apoli:chance",
+								"chance": 0.404,
+								"action": {
+									"type": "apoli:execute_command",
+									"command": "function tech:conditioned/duplicate_infection"
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"attack": {
+		"type": "apoli:target_action_on_hit",
+		"entity_action": {
+			"type": "apoli:area_of_effect",
+			"radius": 16,
+			"shape": "sphere",
+			"bientity_action": {
+				"type": "apoli:and",
+				"actions": [
+					{
+						"type": "apoli:damage",
+						"damage_type": "generic",
+						"amount": 0
+					},
+					{
+						"type": "apoli:target_action",
+						"action": {
+							"type": "apoli:add_velocity",
+							"set": true,
+							"x": 0,
+							"y": 0,
+							"z": 0
+						}
+					}
+				]
+			},
+			"bientity_condition": {
+				"type": "apoli:target_condition",
+				"condition": {
+					"type": "apoli:and",
+					"conditions": [
+						{
+							"type": "apoli:entity_type",
+							"entity_type": "minecraft:silverfish"
+						},
+						{
+							"type": "apoli:nbt",
+							"nbt": "{Tags:[tech.infection]}"
+						}
+					]
+				}
 			}
 		}
 	}

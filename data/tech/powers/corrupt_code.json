@@ -21,22 +21,64 @@
 			}
 		},
 		"bientity_action": {
-			"type": "apoli:target_action",
-			"action": {
-				"type": "apoli:if_else",
-				"condition": {
-					"type": "apoli:entity_type",
-					"entity_type": "minecraft:player"
+			"type": "apoli:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "apoli:target_condition",
+						"condition": {
+							"type": "apoli:and",
+							"conditions": [
+								{
+									"type": "apoli:in_tag",
+									"tag": "tech:code_corrupt_invulnerable"
+								},
+								{
+									"type": "apoli:nbt",
+									"nbt": "{Tags:[tech.corrupted_id]}",
+									"inverted": true
+								}
+							]
+						}
+					},
+					"action": {
+						"type": "apoli:actor_action",
+						"action": {
+							"type": "apoli:execute_command",
+							"command": "title @s actionbar {\"text\":\"Targeted entity has checksum too powerfull to corrupt its ID!\",\"color\":\"red\"}"
+						}
+					}
 				},
-				"if_action": {
-					"type": "apoli:execute_command",
-					"command": "function tech:random_swap"
+				{
+					"condition": {
+						"type": "apoli:target_condition",
+						"condition": {
+							"type": "apoli:entity_type",
+							"entity_type": "minecraft:player"
+						}
+					},
+					"action": {
+						"type": "apoli:target_action",
+						"action": {
+							"type": "apoli:execute_command",
+							"command": "function tech:random_swap"
+						}
+					}
 				},
-				"else_action": {
-					"type": "apoli:execute_command",
-					"command": "function tech:random_conversion"
+				{
+					"condition": {
+						"type": "apoli:constant",
+						"value": true
+					},
+					"action": {
+						"type": "apoli:target_action",
+						"action": {
+							"type": "apoli:execute_command",
+							"command": "function tech:random_conversion"
+						}
+					}
 				}
-			}
+			]
 		},
 		"miss_action": {
 			"type": "apoli:and",
