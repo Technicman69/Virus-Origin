@@ -1,0 +1,34 @@
+{
+    "name": "Corruption",
+    "type": "apoli:action_on_item_use",
+    "trigger": "instant",
+    "item_condition": {
+        "type": "apoli:nbt",
+        "nbt": "{corrupted_orb: 1b}"
+    },
+    "entity_action": {
+        "type": "apoli:if_else",
+        "condition": {
+            "type": "origins:origin",
+            "origin": "tech:virus"
+        },
+        "if_action": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/origin set @s tech:mutation origins:empty"
+                },
+                {
+                    "type": "apoli:trigger_cooldown",
+                    "power": "*:leveling_can_mutate"
+                }
+            ]
+        },
+        "else_action": {
+            "type": "apoli:grant_power",
+            "power": "*:effects/glitched",
+            "source": "*:*"
+        }
+    }
+}

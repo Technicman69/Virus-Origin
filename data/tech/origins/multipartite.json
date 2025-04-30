@@ -1,0 +1,16 @@
+{
+	"impact": 2,
+	"icon": {
+        "item": "minecraft:music_disc_mall",
+        "tag": "{Enchantments:[{}]}"
+    },
+	"name": "File infector",
+	"description": "",
+	"powers": [
+		"tech:infect",
+		"tech:infection_release_thy_brothers",
+		"tech:merge",
+		"tech:corrupt_code",
+		"tech:exhausting_infections"
+	]
+}

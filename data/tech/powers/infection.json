@@ -14,6 +14,11 @@
 	},
 	"copy_paste": {
 		"type": "apoli:self_action_on_hit",
+		"damage_condition": {
+			"type": "apoli:name",
+			"name": "generic",
+			"inverted": true
+		},
 		"entity_action": {
 			"type": "apoli:and",
 			"actions": [
@@ -133,6 +138,151 @@
 					]
 				}
 			}
+		}
+	},
+	"random_aggro": {
+		"type": "apoli:action_over_time",
+		"interval": 100,
+		"entity_action": {
+			"type": "apoli:area_of_effect",
+			"radius": 16,
+			"shape": "sphere",
+			"bientity_action": {
+				"type": "apoli:chance",
+				"chance": 0.404,
+				"action": {
+					"type": "apoli:invert",
+					"action": {
+						"type": "apoli:and",
+						"actions": [
+							{
+								"type": "apoli:damage",
+								"damage_type": "generic",
+								"amount": 0
+							},
+							{
+								"type": "apoli:target_action",
+								"action": {
+									"type": "apoli:add_velocity",
+									"set": true,
+									"x": 0,
+									"y": 0,
+									"z": 0
+								}
+							}
+						]
+					}
+				}
+			},
+			"bientity_condition": {
+				"type": "apoli:target_condition",
+				"condition": {
+					"type": "apoli:and",
+					"conditions": [
+						{
+							"type": "apoli:living"
+						},
+						{
+							"type": "origins:origin",
+							"origin": "tech:virus",
+							"inverted": true
+						},
+						{
+							"type": "apoli:in_tag",
+							"tag": "tech:bugs",
+							"inverted": true
+						},
+						{
+							"type": "apoli:nbt",
+							"nbt": "{Tags:[tech.infection]}",
+							"inverted": true
+						}
+					]
+				}
+			}
+		}
+	},
+	"random_effects": {
+		"type": "apoli:target_action_on_hit",
+		"damage_condition": {
+			"type": "apoli:name",
+			"name": "generic",
+			"inverted": true
+		},
+		"cooldown": 20,
+		"entity_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:chance",
+					"chance": 0.091137,
+					"action": {
+						"type": "apoli:and",
+						"actions": [
+							{
+								"type": "apoli:revoke_power",
+								"power": "*:effects/glitched",
+								"source": "*:*"
+							},
+							{
+								"type": "apoli:grant_power",
+								"power": "*:effects/glitched",
+								"source": "*:*"
+							}
+						]
+					}
+				},
+				{
+					"type": "apoli:if_else",
+					"condition": {
+						"type": "apoli:and",
+						"conditions": [
+							{
+								"type": "apoli:entity_type",
+								"entity_type": "minecraft:player",
+								"inverted": true
+							},
+							{
+								"type": "apoli:in_tag",
+								"tag": "tech:code_corrupt_invulnerable",
+								"inverted": true
+							}
+						]
+					},
+					"if_action": {
+						"type": "apoli:chance",
+						"chance": 0.1337,
+						"action": {
+							"type": "apoli:execute_command",
+							"command": "function tech:random_conversion"
+						}
+					}
+				}
+			]
+		}
+	},
+	"release_thy_brothers": {
+		"type": "apoli:self_action_when_hit",
+		"damage_condition": {
+			"type": "apoli:and",
+			"conditions": [
+				{
+					"type": "apoli:attacker",
+					"entity_condition": {
+						"type": "apoli:constant",
+						"value": true
+					}
+				},
+				{
+					"type": "apoli:name",
+					"name": "generic",
+					"inverted": true
+				}
+			]
+		},
+		"entity_action": {
+			"type": "apoli:execute_command",
+			"command": "/execute as @e[type=marker,tag=tech.infection,distance=..16,predicate=tech:50_50] at @s run function tech:delayed_release_infection"
 		}
 	}
 }

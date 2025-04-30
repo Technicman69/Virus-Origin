@@ -1,0 +1,27 @@
+{
+    "criteria": {
+        "aquire": {
+            "trigger": "inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["origins:orb_of_origin"],
+                        "nbt": "{corrupted_orb: true}"
+                    }
+                ]
+            }
+        }
+    },
+    "display": {
+        "icon": {
+            "item": "origins:orb_of_origin",
+            "nbt": "{Enchantments:[{}]}"
+        },
+        "title": "It's mutating ☠",
+        "description": ["Aquire ",{"text": "The corrupted orb","color": "dark_purple", "obfuscated": true}],
+        "announce_to_chat": false,
+        "show_toast": true,
+        "frame": "task"
+    },
+    "parent": "tech:virus/root"
+}

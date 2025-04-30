@@ -1,0 +1,19 @@
+{
+    "criteria": {
+        "infect_spawner": {
+            "trigger": "impossible"
+        }
+    },
+    "display": {
+        "icon": {
+            "item": "spawner"
+        },
+        "title": "A bug and a feature!",
+        "description": "Infect a mob spawner",
+        "announce_to_chat": false,
+        "show_toast": true,
+        "hidden": true,
+        "frame": "challenge"
+    },
+    "parent": "tech:virus/root"
+}

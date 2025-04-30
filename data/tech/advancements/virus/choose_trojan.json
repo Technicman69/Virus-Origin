@@ -1,0 +1,22 @@
+{
+    "criteria": {
+        "chose_virus": {
+            "trigger": "origins:chose_origin",
+            "conditions": {
+                "origin": "tech:trojan"
+            }
+        }
+    },
+    "display": {
+        "icon": {
+            "item": "minecraft:leather_horse_armor"
+        },
+        "title": "trojan.exe",
+        "description": "You mutated into the Trojan.",
+        "announce_to_chat": false,
+        "show_toast": true,
+        "hidden": true,
+        "frame": "task"
+    },
+    "parent": "tech:virus/aquire_corrupted_orb"
+}

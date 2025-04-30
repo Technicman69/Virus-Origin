@@ -1,0 +1,72 @@
+{
+    "name": "Redundant packets",
+    "description": "When nearby a large number of infections, your Virus body spends a lot of energy on sending synchronization packets between you, causing faster exhaustion",
+    "type": "apoli:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "apoli:and",
+        "actions": [
+            {
+                "type": "apoli:execute_command",
+                "command": "/execute store result score %infection count if entity @e[type=minecraft:silverfish,tag=tech.infection,distance=..64]"
+            },
+            {
+                "type": "apoli:if_else_list",
+                "actions": [
+                    {
+                        "condition": {
+                            "type": "apoli:scoreboard",
+                            "name": "%infection",
+                            "objective": "count",
+                            "comparison": ">",
+                            "compare_to": 24
+                        },
+                        "action": {
+                            "type": "apoli:exhaust",
+                            "amount": 1
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "apoli:scoreboard",
+                            "name": "%infection",
+                            "objective": "count",
+                            "comparison": ">",
+                            "compare_to": 16
+                        },
+                        "action": {
+                            "type": "apoli:exhaust",
+                            "amount": 0.6
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "apoli:scoreboard",
+                            "name": "%infection",
+                            "objective": "count",
+                            "comparison": ">",
+                            "compare_to": 8
+                        },
+                        "action": {
+                            "type": "apoli:exhaust",
+                            "amount": 0.3
+                        }
+                    },
+                    {
+                        "condition": {
+                            "type": "apoli:scoreboard",
+                            "name": "%infection",
+                            "objective": "count",
+                            "comparison": ">",
+                            "compare_to": 4
+                        },
+                        "action": {
+                            "type": "apoli:exhaust",
+                            "amount": 0.1
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

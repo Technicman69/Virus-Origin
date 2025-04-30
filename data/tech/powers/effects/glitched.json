@@ -1,5 +1,14 @@
 {
 	"type": "apoli:multiple",
+	"reset_duration": {
+		"type": "apoli:action_on_callback",
+		"entity_action_gained": {
+			"type": "apoli:change_resource",
+			"resource": "*:*_duration",
+			"operation": "set",
+			"change": 5
+		}
+	},
 	"particles": {
 		"hidden": true,
 		"type": "apoli:particle",
@@ -23,12 +32,11 @@
 	"duration": {
 		"type": "apoli:resource",
 		"min": 0,
-		"max": 5,
+		"max": 20,
 		"start_value": 5,
 		"min_action": {
-			"type": "apoli:revoke_power",
-			"power": "*:*",
-			"source": "*:tentacles/error_tendrils"
+			"type": "apoli:execute_command",
+			"command": "/power remove @s tech:effects/glitched"
 		}
 	},
 	"shader": {
@@ -40,6 +48,11 @@
 		"entity_action": {
 			"type": "apoli:and",
 			"actions": [
+				{
+					"type": "apoli:damage",
+					"amount": 1,
+					"damage_type": "tech:glitch"
+				},
 				{
 					"type": "apoli:change_resource",
 					"resource": "*:*_duration",
@@ -115,6 +128,62 @@
 							}
 						}
 					]
+				}
+			]
+		}
+	},
+	"death": {
+		"type": "apoli:prevent_death",
+		"entity_action": {
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:play_sound",
+					"sound": "minecraft:ui.stonecutter.take_result",
+					"pitch": 0.5
+				},
+				{
+					"type": "apoli:spawn_particles",
+					"particle": {
+						"type": "minecraft:block_marker",
+						"params": "air"
+					},
+					"count": 1
+				},
+				{
+					"type": "apoli:drop_inventory"
+				},
+				{
+					"type": "apoli:if_else",
+					"condition": {
+						"type": "apoli:xp_points",
+						"comparison": ">=",
+						"compare_to": 100
+					},
+					"if_action": {
+						"type": "apoli:execute_command",
+						"command": "/summon experience_orb ~ ~ ~ {Value:100}"
+					}
+				},
+				{
+					"type": "apoli:add_xp",
+					"levels": -999999
+				},
+				{
+					"type": "apoli:execute_command",
+					"command": "/title @s title {\"text\":\"FatalError: Player data corrupted\",\"color\":\"dark_red\"}"
+				},
+				{
+					"type": "apoli:execute_command",
+					"command": "/tp @s ~ -20000000 ~"
+				},
+				{
+					"type": "apoli:heal",
+					"amount": 20
+				},
+				{
+					"type": "apoli:execute_command",
+					"command": "/power remove @s tech:effects/glitched"
 				}
 			]
 		}

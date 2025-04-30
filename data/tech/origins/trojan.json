@@ -1,0 +1,12 @@
+{
+    "impact": 2,
+    "icon": {
+        "item": "minecraft:leather_horse_armor",
+        "tag": "{Enchantments:[{}]}"
+    },
+    "name": "Trojan",
+    "description": "",
+    "powers": [
+        "tech:trojan/corrupt_food"
+    ]
+}

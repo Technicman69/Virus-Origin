@@ -5,17 +5,35 @@
 		"type": "apoli:delay",
 		"ticks": 1,
 		"action": {
-			"type": "apoli:if_else",
-			"condition": {
-				"type": "apoli:command",
-				"command": "/team list bugs",
-				"comparison": "==",
-				"compare_to": 0
-			},
-			"if_action": {
-				"type": "apoli:execute_command",
-				"command": "tellraw @s {\"text\":\"Warning! It appears that there are problems with function tags, which will cause Virus origin's powers to not work properly. It could be caused by other datapacks' function tags reference nonexistent functions. Try disabling problematic datapacks or contact the Virus origin's creator.\",\"color\":\"red\"}"
-			}
+			"type": "apoli:and",
+			"actions": [
+				{
+					"type": "apoli:if_else",
+					"condition": {
+						"type": "apoli:command",
+						"command": "/team list bugs",
+						"comparison": "==",
+						"compare_to": 0
+					},
+					"if_action": {
+						"type": "apoli:execute_command",
+						"command": "tellraw @s {\"text\":\"Warning! It appears that the custom team the datapack is using was removed or some other datapack is already using teams and prevents you from being in one. It might result in the Virus origin's powers not working properly!\",\"color\":\"red\"}"
+					}
+				},
+				{
+					"type": "apoli:if_else",
+					"condition": {
+						"type": "apoli:command",
+						"command": "/scoreboard players get %tick_test count",
+						"comparison": "!=",
+						"compare_to": 7
+					},
+					"if_action": {
+						"type": "apoli:execute_command",
+						"command": "tellraw @s {\"text\":\"Warning! It appears that there are problems with function tags, which will cause Virus origin's powers to not work properly. It could be caused by other datapacks' function tags reference nonexistent functions. Try disabling problematic datapacks or contact the Virus origin's creator.\",\"color\":\"red\"}"
+					}
+				}
+			]
 		}
 	}
 }

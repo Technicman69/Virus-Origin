@@ -1,0 +1,55 @@
+{
+    "name": "Mutation",
+    "description": "With passage of time and performing certain actions your code can become deformed, allowing for some new abilities...",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Mutation's progress bar appears right above the hunger bar"
+        }
+    ],
+    "type": "apoli:multiple",
+    "can_mutate": {
+        "type": "apoli:cooldown",
+        "cooldown": 1
+    },
+    "xp_bar": {
+        "type": "apoli:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1000,
+        "hud_render": {
+            "bar_index": 5,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "order": -1
+        },
+        "condition": {
+            "type": "apoli:resource",
+            "resource": "*:*_xp_bar",
+            "comparison": "<",
+            "compare_to": 1000
+        },
+        "max_action": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/loot give @s loot tech:items/corrupted_orb"
+                },
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/playsound minecraft:ui.toast.challenge_complete master @s ~ ~ ~ 1 0.5"
+                }
+            ]
+        }
+    },
+    "time_increase": {
+        "type": "apoli:action_over_time",
+        "interval": 1200,
+        "entity_action": {
+            "type": "apoli:change_resource",
+            "resource": "*:*_xp_bar",
+            "change": 1
+        }
+    }
+}

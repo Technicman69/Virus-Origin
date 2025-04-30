@@ -1,0 +1,19 @@
+{
+    "type": "apoli:modify_food",
+    "entity_action": {
+        "type": "apoli:and",
+        "actions": [
+            {
+                "type": "apoli:grant_power",
+                "power": "*:effects/glitched",
+                "source": "*:*"
+            },
+            {
+                "type": "apoli:change_resource",
+                "resource": "*:effects/glitched_duration",
+                "operation": "set",
+                "change": 10
+            }
+        ]
+    }
+}

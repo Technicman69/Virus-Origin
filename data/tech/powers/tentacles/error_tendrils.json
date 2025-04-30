@@ -75,22 +75,19 @@
                                 },
                                 {
                                     "type": "apoli:revoke_power",
-                                    "power": "*:tentacles/glitched",
-                                    "source": "*:*"
+                                    "power": "*:effects/glitched",
+                                    "source": "*:infection"
                                 },
                                 {
                                     "type": "apoli:grant_power",
-                                    "power": "*:tentacles/glitched",
-                                    "source": "*:*"
+                                    "power": "*:effects/glitched",
+                                    "source": "*:infection"
                                 },
                                 {
                                     "type": "apoli:apply_effect",
                                     "effects": [
                                         {
                                             "effect": "minecraft:darkness"
-                                        },
-                                        {
-                                            "effect": "minecraft:wither"
                                         }
                                     ]
                                 }

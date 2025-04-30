@@ -1,0 +1,18 @@
+{
+    "criteria": {
+        "infect_spawner": {
+            "trigger": "impossible"
+        }
+    },
+    "display": {
+        "icon": {
+            "item": "poisonous_potato"
+        },
+        "title": "genius.",
+        "description": ["Use ",{"text": "Inject","color": "light_purple"}," power to inject an injector."],
+        "announce_to_chat": false,
+        "show_toast": true,
+        "frame": "task"
+    },
+    "parent": "tech:virus/root"
+}

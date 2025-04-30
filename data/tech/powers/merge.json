@@ -67,6 +67,14 @@
                                         "resource": "*:infect_uses",
                                         "change": 1
                                     }
+                                },
+                                "else_action": {
+                                    "type": "apoli:actor_action",
+                                    "action": {
+                                        "type": "apoli:change_resource",
+                                        "resource": "*:leveling_xp_bar",
+                                        "change": 10
+                                    }
                                 }
                             },
                             {

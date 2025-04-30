@@ -1,0 +1,36 @@
+{
+    "hidden": false,
+    "name": "virus.mutation.exe",
+    "default_origin": "origins:empty",
+    "allow_random": true,
+    "order": 9999,
+    "gui_title": {
+        "choose_origin": "modification.exe",
+        "view_origin": "modification.exe --help"
+    },
+    "missing_name": "missingno",
+    "missing_description": "ModificationException: mod not found.",
+    "origins": [
+        {
+            "condition": {
+                "type": "apoli:and",
+                "conditions": [
+                    {
+                        "type": "origins:origin",
+                        "origin": "tech:virus"
+                    },
+                    {
+                        "type": "apoli:resource",
+                        "resource": "tech:leveling_can_mutate",
+                        "comparison": ">",
+                        "compare_to": 0
+                    }
+                ]
+            },
+            "origins": [
+                "tech:multipartite",
+                "tech:trojan"
+            ]
+        }
+    ]
+}

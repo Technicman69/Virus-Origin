@@ -1,0 +1,44 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "origins:orb_of_origin",
+                    "functions": [
+                        {
+                            "function": "set_name",
+                            "name": {
+                                "text": "The corrupted orb",
+                                "color": "light_purple",
+                                "italic": false,
+                                "obfuscated": true
+                            }
+                        },
+                        {
+                            "function": "set_lore",
+                            "lore": ["The corrupted orb"]
+                        },
+                        {
+                            "function": "set_nbt",
+                            "tag": "{corrupted_orb: true, Targets: [{Layer: \"tech:mutation\"}]}"
+                        },
+                        {
+                            "function": "apoli:add_power",
+                            "power": "tech:items/corrupted_orb",
+                            "slot": "mainhand",
+                            "negative": true
+                        },
+                        {
+                            "function": "apoli:add_power",
+                            "power": "tech:items/corrupted_orb",
+                            "slot": "offhand",
+                            "negative": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

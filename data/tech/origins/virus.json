@@ -8,10 +8,8 @@
 	"description": "Born from the hands of a deranged programmer, your only purpose is to destroy and wreck havoc leading the entire Minecraft world to its downfall",
 	"powers": [
 		"tech:load_check",
+		"tech:leveling",
 		"tech:vfx",
-		"tech:infect",
-		"tech:merge",
-		"tech:corrupt_code",
 		"tech:spreading_bugs",
 		"tech:tentacles/toggle_tendrils",
 		"tech:redstone_bugging",
